@@ -94,6 +94,20 @@ public class CountryController
 
     //for stretch
     //localhost:8080/data/population/median - return the country with the median population
+    @GetMapping(value="/population/median", produces={"application/json"})
+    public ResponseEntity<?> getCountryWithMedianPopulation()
+    {
+        CountriesApplication.ourCountryList.countryList.sort((c1, c2) -> (int)(c2.getPopulation() - c1.getPopulation()));   //sort must work with int type
+        int median = (int)(Math.floor(CountriesApplication.ourCountryList.countryList.size() / 2));         //Math.floor returns double
+        return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList.get(median), HttpStatus.OK);
+    }
 
     //localhost:8080/data/age/median - return the country with the median median age
+    @GetMapping(value="/age/median", produces={"application/json"})
+    public ResponseEntity<?> getCountryWithMedianMedianAge()
+    {
+        CountriesApplication.ourCountryList.countryList.sort((c1, c2) -> c2.getMedianAge() - c1.getMedianAge());
+        int median = (int)(Math.floor(CountriesApplication.ourCountryList.countryList.size() / 2));
+        return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList.get(median), HttpStatus.OK);
+    }
 }
