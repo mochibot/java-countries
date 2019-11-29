@@ -20,6 +20,17 @@ public class Country
         this.medianAge = medianAge;
     }
 
+    /* to create a copy of the Country object
+    public Country(Country toClone)
+    {
+        this.id = toClone.getId();
+        this.name = toClone.getName();
+        this.population = toClone.getPopulation();
+        this.landMass = toClone.getLandMass();
+        this.medianAge = toClone.getMedianAge();
+    }
+    */
+
     //getters
     public long getId()
     {
